@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from "./header/header.component";
+import { HeaderComponent } from './header/header.component';
+import { SliderComponent } from './slider/slider.component';
+import { BodyComponent } from './body/body.component';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, CommonModule, HeaderComponent],
+  imports: [
+    FormsModule,
+    CommonModule,
+    HeaderComponent,
+    SliderComponent,
+    BodyComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'Restauracja';
