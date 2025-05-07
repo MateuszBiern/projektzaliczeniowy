@@ -1,0 +1,17 @@
+<section class="founders">
+    <h2>Nasz Zespół</h2>
+    <div class="founder-intro">
+        <p>Poznaj ludzi, którzy stoją za sukcesem Smaków Świata...</p>
+    </div>
+
+    <div class="founder-photos">
+        <div class="founder-photo-item" *ngFor="let founder of founders">
+            <img [src]="'assets/images/' + founder.image" [alt]="founder.name" class="round">
+            <span class="founder-name">{{founder.name}}</span>
+        </div>
+    </div>
+
+    <div class="founder-details">
+        <app-founder-item *ngFor="let founder of founders" [founder]="founder"></app-founder-item>
+    </div>
+</section>
