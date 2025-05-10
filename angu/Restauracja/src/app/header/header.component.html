@@ -1,13 +1,16 @@
 <header class="main-header">
   <div class="header-container">
-    <h1 class="logo">Smaki<span>Świata</span></h1>
+    <h1 class="logo" routerLink="/body">Smaki<span>Świata</span></h1>
     <div class="header-right" style="display: flex; align-items: center;">
-      <a href="index.html" class="login-btn">
+
+      <a routerLink="/login" class="login-btn">
+        Zaloguj
+
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
           <path
             d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
         </svg>
-        Wyloguj
+
       </a>
 
       <div class="burger-menu" id="burgerMenu" (click)="toggleMenu($event)">
@@ -17,17 +20,41 @@
       </div>
 
       <div class="menu-items" id="menuItems" [ngClass]="{ 'active': menuActive }" (click)="$event.stopPropagation()">
-        <a href="settings.html#profile">Moje dane</a>
-        <a href="settings.html#reservations">Historia rezerwacji</a>
-        <a href="settings.html#reserve">Zarezerwuj stolik</a>
-        <a href="settings.html#contact">Kontakt</a>
+        <a routerLink="/ustawienia">
+          Moje dane
+        </a>
+        <a routerLink="/historia">
+          Historia zamówień
+        </a>
+
+
+        <a routerLink="/rezerwacja">Zarezerwuj Stolik</a>
+
+
+
+
+        <a routerLink="/kontakt">
+          kontakt
+        </a>
+
+
+
         <a href="settings.html#about">O nas</a>
-        <a href="index.html">Wyloguj</a>
+
+
       </div>
     </div>
   </div>
 </header>
-<nav>
+
+
+
+
+
+
+
+<!-- wazne -->
+<!-- <nav>
   <a routerLink="/rezerwacja">
     <p>rezerwacja</p>
   </a>
@@ -37,4 +64,4 @@
   <a routerLink="/rezerwacja">
     <p>rezerwacja</p>
   </a>
-</nav>
+</nav> -->

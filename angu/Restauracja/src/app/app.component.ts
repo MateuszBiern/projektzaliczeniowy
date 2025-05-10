@@ -5,6 +5,8 @@ import { HeaderComponent } from './header/header.component';
 
 import { BodyComponent } from './body/body.component';
 import { RouterOutlet } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { RejestracjaComponent } from './rejestracja/rejestracja.component';
 
 @Component({
   selector: 'app-root',
