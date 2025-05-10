@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rezerwacja - Restauracja</title>
+  <link rel="stylesheet" href="rezerwacja.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-container">
+      <h1 class="logo">Restauracja<span>Smak</span></h1>
+      <div class="header-right">
+        <div class="burger-menu" id="burger">
+          <div class="burger-icon"></div>
+          <div class="burger-icon"></div>
+          <div class="burger-icon"></div>
+        </div>
+        <div class="menu-items" id="menu">
+          <a href="#">Strona Główna</a>
+          <a href="#">Menu</a>
+          <a href="#">Rezerwacja</a>
+          <a href="#">Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="reservation-container">
+    <h2>Zarezerwuj stolik</h2>
+
+    <div class="calendar-controls">
+        <button id="prevMonth" class="prev-month">&lt;</button>
+        <h3 id="monthYear">Maj 2025</h3>
+        <button id="nextMonth" class="next-month">&gt;</button>
+    </div>
+    
+    <div id="calendarGrid" class="calendar-grid"></div>
+
+    <div id="hours" class="hours"></div>
+    <div id="people-selector" class="people hidden">
+      <label>Ilość osób:</label>
+      <div class="counter">
+        <button id="minus">-</button>
+        <span id="count">1</span>
+        <button id="plus">+</button>
+      </div>
+    </div>
+    <button id="confirm" class="confirm-btn hidden" disabled>Potwierdź rezerwację</button>
+    <div id="summary" class="summary hidden"></div>
+  </main>
+
+  <script src="rezerwacja.js"></script>
+</body>
+</html>
