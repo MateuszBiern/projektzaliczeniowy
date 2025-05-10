@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+// ustawienia.component.ts
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-ustawienia',
-  imports: [RouterLink],
+  standalone: true,
   templateUrl: './ustawienia.component.html',
-  styleUrl: './ustawienia.component.css',
+  styleUrls: ['./ustawienia.component.css'],
+  imports: [RouterLink],
 })
-export class UstawieniaComponent {}
+export class UstawieniaComponent implements OnInit {
+  username: string = '';
+  email: string = '';
+
+  ngOnInit() {
+    // Pobierz dane z localStorage po załadowaniu komponentu
+    this.username = localStorage.getItem('username') || '';
+    this.email = localStorage.getItem('email') || '';
+  }
+}

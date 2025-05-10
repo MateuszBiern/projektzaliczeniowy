@@ -1,43 +1,25 @@
-<!DOCTYPE html>
-<html lang="pl">
+<main>
+    <div class="login-container">
+        <h2 class="login-title">Zaloguj się</h2>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smaki Świata - Logowanie</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap"
-        rel="stylesheet">
+        <form (ngSubmit)="login()">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control" [(ngModel)]="email" required />
+            </div>
 
-</head>
+            <div class="form-group">
+                <label for="password">Hasło</label>
+                <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password"
+                    required />
+            </div>
 
-<body>
+            <button type="submit" class="btn-login">Zaloguj się</button>
 
+            <div class="login-footer">
+                <p>Nie masz konta? <a routerLink="/rejestracja">Zarejestruj się</a></p>
+            </div>
+        </form>
+    </div>
 
-    <main>
-        <div class="login-container">
-            <h2 class="login-title">Zaloguj się</h2>
-
-            <form action="php/login.php" method="POST">
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Hasło</label>
-                    <input type="password" id="password" name="password" class="form-control" required>
-                </div>
-
-                <button type="submit" class="btn-login">Zaloguj się</button>
-
-                <div class="login-footer">
-                    <p>Nie masz konta? <a routerLink='/rejestracja'>Zarejestruj się</a></p>
-                </div>
-            </form>
-        </div>
-    </main>
-</body>
-
-</html>
+</main>

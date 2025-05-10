@@ -1,12 +1,14 @@
 import { AfterViewInit, Component } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RezerwacjaService } from '../rezerwacja.service';
+
 @Component({
   selector: 'app-rezerwacja',
+  standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './rezerwacja.component.html',
-  styleUrl: './rezerwacja.component.css',
+  styleUrls: ['./rezerwacja.component.css'],
 })
 export class RezerwacjaComponent implements AfterViewInit {
   currentDate = new Date();
@@ -16,6 +18,8 @@ export class RezerwacjaComponent implements AfterViewInit {
   peopleCount: number = 1;
 
   dayNames: string[] = ['Pn', 'Wt', 'Śr', 'Cz', 'Pt', 'Sb', 'Nd'];
+
+  constructor(private rezerwacjaService: RezerwacjaService) {}
 
   ngAfterViewInit(): void {
     this.init();
@@ -80,35 +84,7 @@ export class RezerwacjaComponent implements AfterViewInit {
         .querySelectorAll('#calendarGrid div')
         .forEach((el) => el.classList.remove('selected'));
       cell.classList.add('selected');
-      showHours();
-    };
-
-    const showHours = () => {
-      const hoursDiv = document.getElementById('hours')!;
-      hoursDiv.innerHTML = '';
-      this.selectedHour = '';
-      document.getElementById('confirm')!.classList.add('hidden');
-      document.getElementById('people-selector')!.classList.remove('hidden');
-
-      for (let h = 12; h <= 20; h++) {
-        const hour = `${h}:00`;
-        const btn = document.createElement('button');
-        btn.textContent = hour;
-        btn.dataset['hour'] = hour;
-        btn.addEventListener('click', () => selectHour(btn));
-        hoursDiv.appendChild(btn);
-      }
-    };
-
-    const selectHour = (btn: HTMLElement) => {
-      this.selectedHour = btn.dataset['hour']!;
-      document
-        .querySelectorAll('#hours button')
-        .forEach((b) => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      const confirmBtn = document.getElementById('confirm')!;
-      confirmBtn.classList.remove('hidden');
-      (confirmBtn as HTMLButtonElement).disabled = false;
+      this.showHours();
     };
 
     prevMonthBtn.addEventListener('click', () => {
@@ -146,9 +122,42 @@ export class RezerwacjaComponent implements AfterViewInit {
         <p><strong>Ilość osób:</strong> ${this.peopleCount}</p>
       `;
       summary.classList.remove('hidden');
+
+      this.rezerwacjaService.dodajRezerwacje({
+        data: this.selectedDate,
+        godzina: this.selectedHour,
+        osoby: this.peopleCount,
+      });
     });
 
-    // Wywołanie na start
     renderCalendar();
+  }
+
+  showHours(): void {
+    const hoursDiv = document.getElementById('hours')!;
+    hoursDiv.innerHTML = '';
+    this.selectedHour = '';
+    document.getElementById('confirm')!.classList.add('hidden');
+    document.getElementById('people-selector')!.classList.remove('hidden');
+
+    for (let h = 12; h <= 20; h++) {
+      const hour = `${h}:00`;
+      const btn = document.createElement('button');
+      btn.textContent = hour;
+      btn.dataset['hour'] = hour;
+      btn.addEventListener('click', () => this.selectHour(btn));
+      hoursDiv.appendChild(btn);
+    }
+  }
+
+  selectHour(btn: HTMLElement): void {
+    this.selectedHour = btn.dataset['hour']!;
+    document
+      .querySelectorAll('#hours button')
+      .forEach((b) => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    const confirmBtn = document.getElementById('confirm')!;
+    confirmBtn.classList.remove('hidden');
+    (confirmBtn as HTMLButtonElement).disabled = false;
   }
 }
