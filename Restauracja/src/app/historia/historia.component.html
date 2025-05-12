@@ -1,0 +1,8 @@
+<h2>Historia rezerwacji</h2>
+<ul>
+    <li *ngFor="let r of rezerwacje">
+        <strong>Data:</strong> {{ r.data }},
+        <strong>Godzina:</strong> {{ r.godzina }},
+        <strong>Osoby:</strong> {{ r.osoby }}
+    </li>
+</ul>
