@@ -1,0 +1,38 @@
+<div *ngIf="!isLoading">
+  <h2>Historia Rezerwacji</h2>
+
+  <div class="tabs">
+    <button [class.active]="activeTab === 'upcoming'" (click)="switchTab('upcoming')">Nadchodzące</button>
+    <button [class.active]="activeTab === 'past'" (click)="switchTab('past')">Minione</button>
+  </div>
+
+  <div *ngIf="activeTab === 'upcoming'">
+    <ul *ngIf="upcomingReservations.length > 0; else noUpcoming">
+      <li *ngFor="let reservation of upcomingReservations">
+        Data: {{ formatDate(reservation.reservationDate) }}
+        Godzina: {{ formatTime(reservation.reservationTime) }} - {{ formatTime(reservation.reservationEndTime) }}
+        Stolik: {{ reservation.restaurantTable?.name }}
+        </li>
+    </ul>
+    <ng-template #noUpcoming>
+      <p>Brak nadchodzących rezerwacji.</p>
+    </ng-template>
+  </div>
+
+  <div *ngIf="activeTab === 'past'">
+    <ul *ngIf="pastReservations.length > 0; else noPast">
+      <li *ngFor="let reservation of pastReservations">
+        Data: {{ formatDate(reservation.reservationDate) }}
+        Godzina: {{ formatTime(reservation.reservationTime) }} - {{ formatTime(reservation.reservationEndTime) }}
+        Stolik: {{ reservation.restaurantTable?.name }}
+        </li>
+    </ul>
+    <ng-template #noPast>
+      <p>Brak minionych rezerwacji.</p>
+    </ng-template>
+  </div>
+</div>
+
+<div *ngIf="isLoading">
+  Ładowanie rezerwacji...
+</div>
