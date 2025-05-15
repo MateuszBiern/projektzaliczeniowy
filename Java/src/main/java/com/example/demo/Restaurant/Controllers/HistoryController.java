@@ -2,7 +2,10 @@ package com.example.demo.Restaurant.Controllers;
 
 import com.example.demo.Restaurant.Domain.Reservation;
 import com.example.demo.Restaurant.Domain.User;
+import com.example.demo.Restaurant.Repository.LoginRepository;
 import com.example.demo.Restaurant.Repository.ReservationRepository;
+import com.example.demo.Restaurant.Service.LoginService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -16,15 +19,17 @@ import java.util.List;
 public class HistoryController {
 
     private final ReservationRepository reservationRepository;
+    private final LoginService loginService;
 
-    public HistoryController(ReservationRepository reservationRepository) {
+    public HistoryController(ReservationRepository reservationRepository, LoginService loginService) {
         this.reservationRepository = reservationRepository;
+        this.loginService = loginService;
     }
 
 
     @GetMapping("/all")
-    public ResponseEntity<List<Reservation>> getAllReservations(@AuthenticationPrincipal User user) {
-        System.out.println("Authenticated User ID for History: " + user.getId());
+    public ResponseEntity<List<Reservation>> getAllReservations(HttpSession session) {
+       User user = (User) session.getAttribute("user");
         List<Reservation> upcoming = reservationRepository
                 .findByUserAndReservationDateGreaterThanEqualOrderByReservationDateAsc(
                         user, LocalDate.now());
