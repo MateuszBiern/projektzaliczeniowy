@@ -33,13 +33,13 @@ public class User implements UserDetails {
     @Column(name = "email", unique = true)
     private String email;
 
-    public User(Long id, String username, String password, String email) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.confirmPassword = confirmPassword;
-    }
+    // public User(Long id, String username, String password, String email) {
+    //     this.id = id;
+    //     this.username = username;
+    //     this.password = password;
+    //     this.email = email;
+    //     this.confirmPassword = confirmPassword;
+    // }
 
     public Long getId() {
         return id;
