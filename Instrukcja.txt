@@ -1,0 +1,55 @@
+Instrukcja uruchomienia projektu
+
+Poniżej znajdują się kroki potrzebne do uruchomienia projektu zawierającego aplikację frontendową (Angular) oraz backendową (Java), wraz z konfiguracją lokalnej bazy danych MySQL.
+
+--------------------------------------------------
+
+Krok 1: Pobranie i przygotowanie projektu
+
+1. Pobierz archiwum .zip z projektem.
+2. Wypakuj zawartość do dogodnej lokalizacji na dysku.
+
+--------------------------------------------------
+
+Krok 2: Konfiguracja środowisk
+
+Frontend (Angular):
+- Otwórz folder z częścią frontendową projektu (Restauracja) w Visual Studio Code.
+- W terminalu (bash) przejdź do folderu projektu:
+
+  cd restauracja
+
+- Zainstaluj zależności:
+
+  npm install
+
+- Uruchom aplikację:
+
+  ng serve
+
+Aplikacja frontendowa będzie dostępna domyślnie pod adresem: http://localhost:4200
+
+--------------------------------------------------
+
+Backend (Java ):
+- Otwórz projekt backendowy w IntelliJ IDEA.
+- Odszukaj klasę główną (DemoApplication.java) i uruchom ją jako aplikację Java.
+
+Backend będzie nasłuchiwał na domyślnym porcie: http://localhost:8080
+
+--------------------------------------------------
+
+Krok 3: Konfiguracja lokalnego serwera bazy danych
+
+- Uruchom lokalny serwer bazy danych za pomocą XAMPP (moduły Apache i MySQL).
+- Przejdź do phpMyAdmin (np. pod adresem: http://localhost/phpmyadmin).
+- Utwórz nową bazę danych o nazwie:
+
+  loginsys
+
+- Zaimportuj do niej plik SQL z projektu (loginsys.sql).
+
+--------------------------------------------------
+
+
+Po wykonaniu powyższych kroków, aplikacja frontendowa oraz backendowa powinny działać i komunikować się poprawnie z lokalną bazą danych.
